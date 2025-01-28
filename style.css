@@ -8,6 +8,7 @@ body {
   background-image: linear-gradient(rgba(137, 209, 143, 0.5), rgba(85, 85, 27, 0.5)),
   url(./assets/abstract-blur-hotel-interior_1203-8529.avif);
   background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
 }
 
@@ -56,6 +57,13 @@ select:focus {
   border-color: #3a8138; 
   outline: none; 
   box-shadow: 0 0 5px #3a813888;
+  background-color:rgba(137, 209, 143, 0.4);
+}
+
+input:hover,
+select:hover {
+ cursor: pointer;
+ background-color:rgba(137, 209, 143, 0.25);
 }
 
 .error-message {
@@ -63,7 +71,7 @@ select:focus {
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%); 
-  background-color: rgba(255, 0, 0, 0.9); 
+  background-color: rgba(255, 0, 0, 0.8); 
   color: white; 
   font-size: 1rem; 
   font-weight: bold; 
@@ -131,7 +139,7 @@ button, .modal button, #btnAddEmployee {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  overflow-x: auto;  
+  overflow-y: auto;  
 }
 
 .employeeCard {
