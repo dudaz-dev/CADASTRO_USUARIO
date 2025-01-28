@@ -4,27 +4,71 @@ const inputName = document.querySelector('#employeeName');
 const inputRole = document.querySelector('#employeeRole');
 const inputEmail = document.querySelector('#employeeEmail');
 const inputCPF = document.querySelector('#employeeCPF');
+const inputPhone = document.querySelector('#employeePhone');
+const inputCEP = document.querySelector('#employeeCEP');
+const inputState = document.querySelector('#employeeState');
+const inputCountry = document.querySelector('#employeeCountry');
 const inputAddress = document.querySelector('#employeeAddress');
 const btnSaveEmployee = document.querySelector('#btnSaveEmployee');
 
 let employeeList = [];
 let currentId;
 
+
+function CountryUSER() {
+  const countries = ['Brasil', 'Estados Unidos', 'Canadá', 'Argentina', 'Portugal', 'Espanha'];
+  countries.forEach(country => {
+    const option = document.createElement('option');
+    option.value = country;
+    option.textContent = country;
+    inputCountry.appendChild(option);
+  });
+}
+
+CountryUSER();
+
+
+async function fetchAddress() {
+  const cep = inputCEP.value.replace(/\D/g, '');
+  if (cep.length !== 8) return;
+
+  try {
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await response.json();
+
+    if (data.erro) throw new Error('CEP não encontrado');
+
+    inputState.value = data.uf;
+    inputAddress.value = `${data.logradouro}, ${data.bairro}`;
+  } catch (error) {
+    alert('Erro ao buscar o CEP. Verifique e tente novamente.');
+  }
+}
+
 function openModal(isEdit = false, index = null) {
   modalOverlay.classList.add('active');
 
   if (isEdit && index !== null) {
-    inputName.value = employeeList[index].name;
-    inputRole.value = employeeList[index].role;
-    inputEmail.value = employeeList[index].email;
-    inputCPF.value = employeeList[index].cpf;
-    inputAddress.value = employeeList[index].address;
+    const employee = employeeList[index];
+    inputName.value = employee.name;
+    inputRole.value = employee.role;
+    inputEmail.value = employee.email;
+    inputCPF.value = employee.cpf;
+    inputPhone.value = employee.phone;
+    inputCEP.value = employee.cep;
+    inputState.value = employee.state;
+    inputCountry.value = employee.country;
+    inputAddress.value = employee.address;
     currentId = index;
   } else {
     inputName.value = '';
     inputRole.value = '';
     inputEmail.value = '';
     inputCPF.value = '';
+    inputPhone.value = '';
+    inputCEP.value = '';
+    inputState.value = '';
+    inputCountry.value = '';
     inputAddress.value = '';
     currentId = null;
   }
@@ -43,13 +87,28 @@ modalOverlay.addEventListener('click', (e) => {
 btnSaveEmployee.addEventListener('click', (e) => {
   e.preventDefault();
 
-  if (!inputName.value || !inputRole.value || !inputEmail.value || !inputCPF.value || !inputAddress.value) return;
+  if (
+    !inputName.value ||
+    !inputRole.value ||
+    !inputEmail.value ||
+    !inputCPF.value ||
+    !inputPhone.value ||
+    !inputCEP.value ||
+    !inputState.value ||
+    !inputCountry.value ||
+    !inputAddress.value
+  )
+    return;
 
   const employeeData = {
     name: inputName.value,
     role: inputRole.value,
     email: inputEmail.value,
     cpf: inputCPF.value,
+    phone: inputPhone.value,
+    cep: inputCEP.value,
+    state: inputState.value,
+    country: inputCountry.value,
     address: inputAddress.value,
   };
 
@@ -73,11 +132,19 @@ function loadEmployeeList() {
     card.classList.add('employeeCard');
 
     card.innerHTML = `
-      <div class="tags">
+      <div class="tags ">
         <span><strong>Nome</strong>: ${employee.name}</span>
         <span><strong>Função</strong>: ${employee.role}</span>
         <span><strong>Email</strong>: ${employee.email}</span>
         <span><strong>CPF</strong>: ${employee.cpf}</span>
+        <div class="inlineItens">
+          <span><strong>Telefone</strong>: ${employee.phone}</span>
+          <span><strong>CEP</strong>: ${employee.cep}</span>
+        </div>
+        <div class="inlineItens">
+          <span><strong>Estado</strong>: ${employee.state}</span>
+          <span><strong>País</strong>: ${employee.country}</span>
+        </div>
         <span><strong>Endereço</strong>: ${employee.address}</span>
       </div>
       <div class="actionButtons">

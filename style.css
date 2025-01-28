@@ -27,6 +27,34 @@ body {
   background-color: #eee; 
   border-radius: 10px; 
   }
+  
+
+input,
+select {
+  width: 100%; 
+  padding: 10px; 
+  margin: 8px 0; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  box-sizing: border-box; 
+  background-color: #f9f9f9; 
+}
+
+select {
+  appearance: none; 
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="gray" d="M2 0L0 2h4z"/></svg>'); 
+  background-repeat: no-repeat;
+  background-position: right 10px center; 
+  background-size: 10px; 
+}
+
+input:focus,
+select:focus {
+  border-color: #3a8138; 
+  outline: none; 
+  box-shadow: 0 0 5px #3a813888;
+}
 
 button, .modal button, #btnAddEmployee {
   border: none;
@@ -42,12 +70,13 @@ button, .modal button, #btnAddEmployee {
 }
 
 .crudContainer {
-  width: 90%;
+  width: 50%;
   height: 80%;
   background: rgb(255, 255, 255);
   padding: 10px;
   display: flex;
   flex-direction: column;
+
 }
 
 .crudHeader {
@@ -72,22 +101,25 @@ button, .modal button, #btnAddEmployee {
   font-size: 1.5rem;
 }
 
+#employeeList {
+  display: inline-block; 
+}
+
 .employeeListContainer {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  overflow-x: auto;  
 }
 
 .employeeCard {
   background-color: #ffffff;  
   border: 1px solid #eee;
-  min-width: 300px;
+  min-width: 450px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
   margin-bottom: 20px;
 }
 
@@ -124,6 +156,18 @@ button, .modal button, #btnAddEmployee {
   justify-content: center;
 }
 
+.inlineItens, .modal {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  
+  gap: 10px; 
+}
+
+.modal .inlineItens label, .modal .inlineItens input {
+  flex: 1; 
+}
+
 .modal {
   background-color: white;
   padding: 20px;
@@ -136,11 +180,14 @@ button, .modal button, #btnAddEmployee {
 }
 
 .modal input {
-  width: 100%;
   padding: 8px;
   margin-bottom: 15px;
   border: 1px solid #eee;
   border-radius: 5px;
+}
+
+.modal label, .modal input {
+  max-width: 45%; 
 }
 
 .modal button {
@@ -156,6 +203,7 @@ button, .modal button, #btnAddEmployee {
   display: flex;
 }
 
+
 @media (max-width: 480px) {
   .crudContainer{
     width: 100vh;
@@ -165,6 +213,8 @@ button, .modal button, #btnAddEmployee {
 
   .employeeCard {
     padding: 10px;
+    min-width:  250px;
+
   }
 
   .crudHeader {

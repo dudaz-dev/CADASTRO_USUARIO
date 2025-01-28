@@ -14,8 +14,8 @@
 
   <main class="crudContainer">
     <div class="crudHeader">
-      <h1>Cadastro Funcionários </h1>
-      <button onclick="openModal()" id="btnAddEmployee">Adicionar</button>
+      <h1>Funcionários </h1>
+      <button onclick="openModal()" id="btnAddEmployee">Cadastrar</button>
     </div>
 
     <section class="employeeListContainer">
@@ -36,6 +36,24 @@
 
           <label for="employeeCPF">CPF</label>
           <input id="employeeCPF" type="text" required />
+
+          <div class="inlineItens">  
+            <label for="employeePhone">TELEFO</label>
+            <input id="employeePhone" type="text" required />
+      
+            <label for="employeeCEP">CEP</label>
+            <input id="employeeCEP" type="text" required onblur="fetchAddress()" />
+          </div>
+
+          <div class="inlineItens">            
+            <label for="employeeState">ESTADO</label>
+            <input id="employeeState" type="text" required readonly />
+
+            <label for="employeeCountry">PAÍS</label>
+            <select id="employeeCountry" required>
+            <option value="">Selecione</option>
+          </select>
+          </div>
 
           <label for="employeeAddress">Endereço</label>
           <input id="employeeAddress" type="text" required />
