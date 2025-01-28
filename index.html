@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />  
+
+  <title>CRUD Gerenciamento de Funcionários</title>
+</head>
+
+<body>  
+
+  <main class="crudContainer">
+    <div class="crudHeader">
+      <h1>Funcionários AVSystemGEO</h1>
+      <button onclick="openModal()" id="btnAddEmployee">Adicionar</button>
+    </div>
+
+    <section class="employeeListContainer">
+      <div id="employeeList"></div>
+    </section>
+    
+    <div class="modalOverlay">
+      <div class="modal">
+        <form id="employeeForm">
+          <label for="employeeName">Nome</label>
+          <input id="employeeName" type="text" required />
+
+          <label for="employeeRole">Função</label>
+          <input id="employeeRole" type="text" required />
+
+          <label for="employeeEmail">Email</label>
+          <input id="employeeEmail" type="text" required />
+
+          <label for="employeeCPF">CPF</label>
+          <input id="employeeCPF" type="text" required />
+
+          <label for="employeeAddress">Endereço</label>
+          <input id="employeeAddress" type="text" required />
+
+          <button id="btnSaveEmployee">Salvar</button>
+        </form>
+      </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
