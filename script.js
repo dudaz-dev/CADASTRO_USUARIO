@@ -27,24 +27,6 @@ function CountryUSER() {
 
 CountryUSER();
 
-
-async function fetchAddress() {
-  const cep = inputCEP.value.replace(/\D/g, '');
-  if (cep.length !== 8) return;
-
-  try {
-    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-    const data = await response.json();
-
-    if (data.erro) throw new Error('CEP não encontrado');
-
-    inputState.value = data.uf;
-    inputAddress.value = `${data.logradouro}, ${data.bairro}`;
-  } catch (error) {
-    alert('Erro ao buscar o CEP. Verifique e tente novamente.');
-  }
-}
-
 function openModal(isEdit = false, index = null) {
   modalOverlay.classList.add('active');
 
