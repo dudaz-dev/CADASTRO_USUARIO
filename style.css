@@ -231,6 +231,10 @@ button, .modal button, #btnAddEmployee {
     background-color: rgba(21, 255, 0, 0.1);
   }
 
+  .employeeListContainer{
+    max-height: 75%;
+  }
+
   .employeeCard {
     padding: 10px;
     min-width:  250px;
