@@ -87,18 +87,26 @@ modalOverlay.addEventListener('click', (e) => {
 btnSaveEmployee.addEventListener('click', (e) => {
   e.preventDefault();
 
+  const errorMessage = document.querySelector('#errorMessage'); 
+
   if (
-    !inputName.value ||
-    !inputRole.value ||
-    !inputEmail.value ||
-    !inputCPF.value ||
-    !inputPhone.value ||
-    !inputCEP.value ||
-    !inputState.value ||
-    !inputCountry.value ||
-    !inputAddress.value
-  )
-    return;
+    !inputName.value.trim() ||
+    !inputRole.value.trim() ||
+    !inputEmail.value.trim() ||
+    !inputCPF.value.trim() ||
+    !inputPhone.value.trim() ||
+    !inputCEP.value.trim() ||
+    !inputState.value.trim() ||
+    !inputCountry.value.trim() ||
+    !inputAddress.value.trim()
+  ) {
+   
+    errorMessage.textContent = 'Por favor, preencha todos os campos antes de salvar.';
+    errorMessage.style.display = 'inline'; 
+    return; 
+  }
+
+  errorMessage.style.display = 'none';
 
   const employeeData = {
     name: inputName.value,
