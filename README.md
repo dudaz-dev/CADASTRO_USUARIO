@@ -23,7 +23,7 @@ Este projeto é um sistema de cadastro de clientes simples desenvolvido com HTML
 
 ## Deploy
 
-**Confira** esse é o link do meu [DEPLOY]().
+**Confira** esse é o link do meu [DEPLOY](https://cadastro-usuario-9a658a3ev-maria-eduardas-projects-bdb4984f.vercel.app/).
 
 ## Desenvolvido
 
