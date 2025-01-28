@@ -233,6 +233,14 @@ button, .modal button, #btnAddEmployee {
     background-color: rgba(21, 255, 0, 0); 
     justify-content: center;    
     flex-direction: column;
+    margin-bottom: 0px;
+  }
+
+  .crudHeader h1 {
+    text-align: center;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(255, 255, 255),rgba(255, 255, 255, 0));
+    width: 90%;
+    padding: 10px;
   }
 
   #btnAddEmployee {
