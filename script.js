@@ -74,11 +74,11 @@ function loadEmployeeList() {
 
     card.innerHTML = `
       <div class="tags">
-        <span>Nome: ${employee.name}</span>
-        <span>Função: ${employee.role}</span>
-        <span>Email: ${employee.email}</span>
-        <span>CPF: ${employee.cpf}</span>
-        <span>Endereço: ${employee.address}</span>
+        <span><strong>Nome</strong>: ${employee.name}</span>
+        <span><strong>Função</strong>: ${employee.role}</span>
+        <span><strong>Email</strong>: ${employee.email}</span>
+        <span><strong>CPF</strong>: ${employee.cpf}</span>
+        <span><strong>Endereço</strong>: ${employee.address}</span>
       </div>
       <div class="actionButtons">
         <button onclick="openModal(true, ${index})">
